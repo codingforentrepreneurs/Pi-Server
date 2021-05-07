@@ -2,7 +2,7 @@
 
 # Pi Server
 
-Reference code for our Pi Server series. 
+Turn your raspberry pi into a networked server! Learn to deploy a minimal Python application into your Pi. We'll cover using nginx, supervisor, git (including on your server), git hooks, docker & docker compose, and more!
 
 ### Resources
 - Pi Server [tutorial series](https://www.codingforentrepreneurs.com/projects/pi-server)
