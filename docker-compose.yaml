@@ -1,0 +1,53 @@
+version: '3.2'
+services:
+    flaskservice:
+        restart: 'always'
+        build:
+            context: ./app
+            dockerfile: Dockerfile.flask
+        environment: 
+            - PORT=8001
+            - NAME='primary service'
+        expose: 
+            - 8001
+    dosservice:
+        restart: 'always'
+        build:
+            context: ./app
+            dockerfile: Dockerfile.flask
+        environment: 
+            - PORT=8003
+            - NAME='dos service'
+        expose: 
+            - 8003
+    tresservice:
+        restart: 'always'
+        build:
+            context: ./app
+            dockerfile: Dockerfile.flask
+        environment: 
+            - PORT=8004
+            - NAME='tres service'
+        expose: 
+            - 8004
+    backupservice:
+        restart: 'always'
+        build:
+            context: ./app
+            dockerfile: Dockerfile.flask
+        environment: 
+            - PORT=8002
+            - NAME='backup service'
+        expose: 
+            - 8002
+    nginx:
+        restart: 'always'
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile.nginx
+        ports:
+            - 80:80
+        depends_on: 
+            - flaskservice
+            - dosservice
+            - backupservice

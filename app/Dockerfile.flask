@@ -1,0 +1,12 @@
+FROM python:3.7-slim
+
+COPY . /app
+WORKDIR /app
+
+RUN python3 -m venv .
+RUN /app/bin/pip install pip --upgrade
+RUN /app/bin/pip install -r requirements.txt
+
+RUN chmod +x run.sh
+
+CMD ["./run.sh"]
